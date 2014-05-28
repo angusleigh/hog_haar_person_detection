@@ -14,5 +14,5 @@ detections on an OpenCV window.
 * $ catkin_make
 * $ roslaunch hog_haar_person_detection_ros hog_haar_person_detection_ros.launch
 
-You will probably also have to edit the "image_topic" parameter in the launch file depending on your setup.
+You will probably also have to edit the "image_topic" parameter in the launch file to reflect the image topic you wish to detect people on.
 
