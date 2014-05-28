@@ -7,6 +7,7 @@ draws the detections on a copy of the image and publishes results as a rostopic.
 detections on an OpenCV window.
 
 ## Usage
+[Install ROS](http://wiki.ros.org/ROS/Installation)
 
 * $ cd [your hydro catkin src folder]
 * $ git clone https://github.com/angusleigh/hog_haar_person_detection_ros.git
