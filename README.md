@@ -14,6 +14,7 @@ detections on an OpenCV window.
 * $ cd ..
 * $ catkin_make
 * $ roslaunch hog_haar_person_detection_ros hog_haar_person_detection_ros.launch
+* Launch your camera node and have it publish to the "image_topic" sepecified in hog_haar_person_detection_ros.launch. Check out the [open-ni](http://wiki.ros.org/openni_launch) node for the Kinect or [USB-Cam](http://wiki.ros.org/usb_cam) node for USB cameras.
 
 You will probably also have to edit the "image_topic" parameter in the launch file to reflect the image topic you wish to detect people on.
 
