@@ -9,7 +9,7 @@ detections on an OpenCV window.
 ## Usage
 [Install ROS](http://wiki.ros.org/ROS/Installation)
 
-* $ cd [your hydro catkin src folder]
+* $ cd [your indigo catkin src folder]
 * $ git clone https://github.com/angusleigh/hog_haar_person_detection.git
 * $ cd ..
 * $ catkin_make
