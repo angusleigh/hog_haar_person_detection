@@ -17,3 +17,8 @@ detections on an OpenCV window.
 * Launch your camera node and have it publish to the "image_topic" parameter sepecified in hog_haar_person_detection.launch. Check out the [open-ni](http://wiki.ros.org/openni_launch) node for the Kinect or [USB-Cam](http://wiki.ros.org/usb_cam) node for USB cameras.
 
 [1] Link is for GPU documentation. I'm not aware of any documentation for the CPU implementaion (which is the one used for this repo).
+
+## Similar packages
+
+* [cob_people_detection](http://wiki.ros.org/cob_people_detection)
+* [face_detector](http://wiki.ros.org/face_detector)
