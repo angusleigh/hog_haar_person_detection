@@ -18,6 +18,11 @@ detections on an OpenCV window.
 
 [1] Link is for GPU documentation. I'm not aware of any documentation for the CPU implementaion (which is the one used for this repo).
 
+## Published message
+
+- `/person_detection/nb_faces`: Give number of faces detected.
+- `/person_detection/nb_pedestrians`: Give number of pedestrians detected.
+
 ## Similar packages
 
 * [cob_people_detection](http://wiki.ros.org/cob_people_detection)
