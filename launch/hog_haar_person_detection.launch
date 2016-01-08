@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <launch>
   <param name="face_cascade_name" value="$(find hog_haar_person_detection)/config/haarcascade_frontalface_alt.xml" />
-  <param name="image_topic" value="/openni/rgb/image_raw" />
+  <param name="image_topic" value="/camera/image_raw" />
   <node pkg="hog_haar_person_detection" type="hog_haar_person_detection" name="hog_haar_person_detection" output="screen"/>
 </launch>
 
