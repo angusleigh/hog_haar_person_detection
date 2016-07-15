@@ -24,9 +24,13 @@ public:
   image_transport::Subscriber im_sub_;
   image_transport::Publisher im_pub_;
 
+  ros::Publisher faces_pub_;
+
   cv::CascadeClassifier face_cascade_;
 
   cv::HOGDescriptor hog_;
+
+  hog_haar_person_detection::Faces facesMessage;
 
   HogHaarPersonDetection()
     :  it_(nh_)
@@ -52,6 +56,7 @@ public:
     // Subscrive to input video feed and publish output video feed
     im_sub_ = it_.subscribe(image_topic, 1, &HogHaarPersonDetection::imageCallback, this);
     im_pub_ = it_.advertise("/camera_person_tracker/output_video", 1);
+    faces_pub_ = nh_.advertise<hog_haar_person_detection::Faces>("/person_detection/faces", 1000);
 
     cv::namedWindow(OPENCV_WINDOW);
   }
@@ -62,6 +67,24 @@ public:
     cv::destroyWindow(OPENCV_WINDOW);
   }
 
+  void addFace(int pos_x, int pos_y, int size_x, int size_y, int score = 0){
+    hog_haar_person_detection::Face face;
+    face.center_pos.x = pos_x;
+    face.center_pos.y = pos_y;
+    face.size_x = size_x;
+    face.size_y = size_y;
+    face.score = score;
+
+    facesMessage.faces.push_back(face);
+  }
+
+  void resetFaces(){
+    facesMessage.faces.clear();
+  }
+
+  void publishFaces(){
+    faces_pub_.publish(facesMessage);
+  }
 
   void imageCallback(const sensor_msgs::ImageConstPtr& msg)
   {
@@ -85,12 +108,18 @@ public:
     cv::equalizeHist( im_gray, im_gray );
     face_cascade_.detectMultiScale( im_gray, detected_faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
 
+    resetFaces();
+
     // Draw detected detected_faces to screen as circles
     for(unsigned i = 0; i < detected_faces.size(); i++)
     {
       cv::Point center( detected_faces[i].x + detected_faces[i].width*0.5, detected_faces[i].y + detected_faces[i].height*0.5 );
       cv::ellipse( im_bgr, center, cv::Size( detected_faces[i].width*0.5, detected_faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
+
+      addFace(detected_faces[i].x, detected_faces[i].y, detected_faces[i].width, detected_faces[i].height, 0);
     }
+
+    publishFaces();
 
     // HOG pedestrian detector
     std::vector<cv::Rect> detected_pedestrian;
