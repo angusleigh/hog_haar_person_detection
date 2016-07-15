@@ -8,22 +8,36 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   cv_bridge
   image_transport
+  message_generation
 )
 
-catkin_package()
+add_message_files(
+ FILES
+ Face.msg
+ Faces.msg
+)
+
+generate_messages(
+ DEPENDENCIES
+ std_msgs
+ geometry_msgs
+)
+
+catkin_package(
+  CATKIN_DEPENDS message_runtime
+)
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
 )
 
-
 add_executable(
-	hog_haar_person_detection 
+	hog_haar_person_detection
 	src/hog_haar_person_detection.cpp
 )
 target_link_libraries(
-	hog_haar_person_detection 
+	hog_haar_person_detection
 	${catkin_LIBRARIES}
 	${OpenCV_INCLUDE_DIRS}
 )
