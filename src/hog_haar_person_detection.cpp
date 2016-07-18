@@ -69,8 +69,8 @@ public:
 
   void addFace(int pos_x, int pos_y, int size_x, int size_y, int score = 0){
     hog_haar_person_detection::Face face;
-    face.center_pos.x = pos_x;
-    face.center_pos.y = pos_y;
+    face.center_pos.x = pos_x - size_x /2;
+    face.center_pos.y = pos_y - size_y/2;
     face.size_x = size_x;
     face.size_y = size_y;
     face.score = score;
