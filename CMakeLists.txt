@@ -13,8 +13,9 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_message_files(
  FILES
- Face.msg
  Faces.msg
+ Pedestrians.msg
+ BoundingBox.msg
 )
 
 generate_messages(
