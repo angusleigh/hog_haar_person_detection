@@ -21,5 +21,6 @@ detections on an OpenCV window.
 
 ## Similar packages
 
+* [spencer people tracking](https://github.com/spencer-project/spencer_people_tracking)
 * [cob_people_detection](http://wiki.ros.org/cob_people_detection)
 * [face_detector](http://wiki.ros.org/face_detector)
